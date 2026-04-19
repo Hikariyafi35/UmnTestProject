@@ -302,7 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65615cfa483002b4585b2a69a2332d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestWatcher
-  folderPath: E:\TestFileWatcher
   fishPrefab: {fileID: 5203893476689663290, guid: c0961eafa6ebe3542aecc37faa5a9fa6, type: 3}
   trashPrefab: {fileID: 5203893476689663290, guid: 092e74cf152df0441b8dc4ca61302bb3, type: 3}
   spawnMin: {x: -10, y: -6}
@@ -1741,7 +1740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98d6f7656df35940a60a1b196bd5c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConfigManager
-  watchFolder: 
+  watchFolder: E:\kosong
 --- !u!1001 &2340152775420180136
 PrefabInstance:
   m_ObjectHideFlags: 0

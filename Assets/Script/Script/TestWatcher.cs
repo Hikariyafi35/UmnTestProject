@@ -7,7 +7,7 @@ using System;
 
 public class TestWatcher : MonoBehaviour
 {
-    public string folderPath;
+    private string folderPath;
 
     FileSystemWatcher watcher;
     ConcurrentQueue<string> fileQueue = new ConcurrentQueue<string>();
