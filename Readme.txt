@@ -1,118 +1,110 @@
-# Aquascape Technical Test - README
+````md
+# 🐠 Aquascape Technical Test - Unity Project
 
-## Gambaran Umum
+<p align="center">
+  <img src="https://img.shields.io/badge/Unity-6000.3.0f1-black?style=for-the-badge&logo=unity" />
+  <img src="https://img.shields.io/badge/Platform-Windows-blue?style=for-the-badge&logo=windows" />
+  <img src="https://img.shields.io/badge/Language-C%23-purple?style=for-the-badge&logo=csharp" />
+</p>
 
-Project ini adalah game simulasi **Aquascape 2D** yang dibuat menggunakan Unity.
-Gameplay utama mengubah file gambar `.png` yang dimasukkan ke folder tertentu menjadi objek di dalam game secara real-time.
+<h1 align="center">🐟 Aquascape Simulation Game</h1>
+
+<p align="center">
+Realtime file-based spawning system that converts external <b>.png</b> files into live in-game entities.
+</p>
+
+---
+
+## 📌 Overview
+
+Project ini adalah game simulasi **Aquascape 2D** yang dibuat menggunakan **Unity**.
+
+Gameplay utama mengubah file gambar **`.png`** yang dimasukkan ke folder tertentu menjadi objek di dalam game secara **real-time**.
 
 Objek yang dapat di-spawn:
 
-* **Fish** → entitas hidup dengan movement dan behavior
-* **Trash** → sampah yang mengapung di aquarium
-
-Project dibuat dengan arsitektur modular dan sistem konfigurasi eksternal agar mudah diubah tanpa rebuild.
+- 🐟 **Fish** → entitas hidup dengan AI movement & hunger system  
+- 🗑 **Trash** → sampah mengapung di aquarium  
 
 ---
 
-# Versi Unity
+## 🎮 Main Features
 
-Dikembangkan menggunakan:
+### 🖼 Realtime File Spawning
 
-```text id="i1"
-Unity 6000.3.0f1
-```
+Menggunakan **FileSystemWatcher** untuk memantau folder.
 
-Kompatibel dengan versi yang diminta:
+Saat file baru dimasukkan:
 
-```text id="i2"
-Unity 6000.3.12f1
-```
+```text
+FISH_[TYPE]_[TIMESTAMP].png
+TRASH_[TYPE]_[TIMESTAMP].png
+````
 
-(Keduanya berada pada branch versi `6000.3.x`)
+Contoh:
 
----
-
-# Fitur Utama
-
-## 1. Sistem Spawn Berbasis File (Real-Time)
-
-Aplikasi memantau folder menggunakan `FileSystemWatcher`.
-
-Saat file `.png` baru dimasukkan ke folder, objek akan otomatis muncul di dalam game saat runtime.
-
-### Format Nama File
-
-```text id="i3"
-FISH_[TYPE]_[YYYYMMDDHHMMSS].png
-TRASH_[TYPE]_[YYYYMMDDHHMMSS].png
-```
-
-### Contoh
-
-```text id="i4"
-FISH_MACKEREL_20260401165920.png
+```text
 FISH_NEMO_20260401170000.png
 TRASH_BOTTLE_20260401170100.png
-TRASH_CAN_20260401170200.png
 ```
 
----
-
-## 2. Behavior Fish
-
-Fish memiliki fitur:
-
-* Bergerak berenang secara acak
-* Kecepatan minimum & maksimum yang dapat diatur
-* Sistem hunger meter
-* Mencari makanan terdekat saat lapar
-* Berhenti makan saat kenyang
-* Kabur sementara saat diklik
-* Sound effect saat diklik / makan
+➡️ Objek langsung spawn di game tanpa rebuild.
 
 ---
 
-## 3. Behavior Trash
+### 🐟 Fish Behavior
 
-Trash memiliki fitur:
-
-* Bergerak mengapung secara acak
-* Mantul saat mengenai dinding
-* Terdorong saat terkena tabrakan ikan
-
----
-
-## 4. Interaksi Player
-
-### Klik Kiri Area Kosong
-
-Spawn makanan pada posisi kursor.
-
-### Klik Kiri Fish
-
-Fish akan takut dan kabur sementara.
-
-### Klik Kiri Trash
-
-Menghapus objek trash.
+* Random swimming movement
+* Hunger system
+* Search nearest food
+* Stop eating when full
+* Scare / flee when clicked
+* Sound effect interaction
 
 ---
 
-# Sistem Konfigurasi
+### 🗑 Trash Behavior
 
-Nilai gameplay dapat diubah tanpa rebuild menggunakan file:
+* Floating movement
+* Bounce from wall
+* Pushed by fish collision
 
-```text id="i5"
+---
+
+### 🖱 Player Interaction
+
+| Action                | Result             |
+| --------------------- | ------------------ |
+| Left Click Empty Area | Spawn food         |
+| Left Click Fish       | Fish scared & flee |
+| Left Click Trash      | Destroy trash      |
+
+---
+
+## ⚙️ Config System
+
+Gameplay dapat diubah tanpa rebuild menggunakan:
+
+```text
 config.json
 ```
 
-File diletakkan di folder yang sama dengan `.exe`.
+Contoh:
+
+```json
+{
+  "watchFolder": "",
+  "fishMinSpeed": 1.5,
+  "fishMaxSpeed": 3,
+  "fishDetectionRadius": 15
+}
+```
 
 ---
 
-# Contoh Struktur Build
+## 📂 Build Structure
 
-```text id="i6"
+```text
 Aquascape.exe
 config.json
 InputFolder/
@@ -120,84 +112,26 @@ InputFolder/
 
 ---
 
-# Contoh config.json
+## 🚀 How To Run
 
-```json id="i7"
-{
-  "watchFolder": "",
+### Build Version
 
-  "fishMinSpeed": 1.5,
-  "fishMaxSpeed": 3.0,
-  "fishDetectionRadius": 15,
-
-  "fishScareDuration": 6,
-  "fishScareSpeedMultiplier": 12,
-  "scareForce": 8,
-
-  "hungerDecreasePerSecond": 10,
-  "hungerCooldown": 5,
-
-  "foodFallSpeed": 1.5,
-
-  "pushForce": 2,
-
-  "masterVolume": 1,
-  "fishClickVolume": 0.8,
-  "fishEatVolume": 0.7
-}
-```
-
----
-
-# Pengaturan Folder Watcher
-
-## Opsi 1 (Disarankan)
-
-Biarkan:
-
-```json id="i8"
-"watchFolder": ""
-```
-
-Game otomatis menggunakan folder:
-
-```text id="i9"
-InputFolder/
-```
-
----
-
-## Opsi 2
-
-Gunakan folder custom:
-
-```json id="i10"
-"watchFolder": "D:/AquascapeInput"
-```
-
----
-
-# Cara Menjalankan (Build)
-
-1. Jalankan `Aquascape.exe`
+1. Jalankan **Aquascape.exe**
 2. Buka folder watcher
-3. Masukkan file `.png` sesuai format nama
-4. Objek akan otomatis muncul
+3. Masukkan file `.png`
+4. Objek spawn otomatis
 
----
-
-# Cara Menjalankan (Project Unity)
+### Unity Project
 
 1. Clone repository
-2. Buka project menggunakan Unity `6000.3.0f1` atau `6000.3.12f1`
-3. Buka scene utama
-4. Tekan Play
+2. Open with **Unity 6000.3.0f1**
+3. Press **Play**
 
 ---
 
-# Struktur Script
+## 🧠 Script Architecture
 
-```text id="i11"
+```text
 Scripts/
 ├── Fish/
 │   ├── FishMovement.cs
@@ -210,110 +144,41 @@ Scripts/
 ├── ConfigManager.cs
 ├── Interaction.cs
 ├── TestWatcher.cs
-├── Exit.cs
-└── SpawnMapping.cs
 ```
 
 ---
 
-# Tanggung Jawab Script
+## 🛠 Tech Stack
 
-## TestWatcher.cs
-
-Mengatur:
-
-* Monitoring folder
-* Scan file lama saat start
-* Load PNG runtime
-* Membuat sprite
-* Spawn Fish / Trash
-* Posisi spawn tidak overlap
-
-## FishMovement.cs
-
-Mengatur:
-
-* Gerakan ikan
-* AI mencari makanan
-* State takut
-* Sound effect
-
-## Hunger.cs
-
-Mengatur:
-
-* Hunger meter
-* Cooldown setelah kenyang
-
-## TrashMovement.cs
-
-Mengatur:
-
-* Gerakan mengapung
-* Mantul dari dinding
-* Reaksi dorongan tabrakan
-
-## Interaction.cs
-
-Mengatur klik mouse player.
-
-## ConfigManager.cs
-
-Membaca file konfigurasi eksternal.
+<p align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" height="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" height="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" height="40"/>
+</p>
 
 ---
 
-# Format File yang Didukung
-
-Hanya:
-
-```text id="i12"
-.png
-```
-
----
-
-# File Tidak Valid
-
-Nama file yang salah akan diabaikan secara aman.
-
-Contoh:
-
-```text id="i13"
-fish.png
-abc.png
-gambar_test.png
-```
-
----
-
-# Teknologi yang Digunakan
-
-* Unity Engine
-* C#
-* FileSystemWatcher
-* JsonUtility
-* Unity Input System
-
----
-
-# Disclosure Penggunaan AI
+## 🤖 AI Usage Disclosure
 
 AI digunakan untuk:
 
 * Diskusi arsitektur
-* Bantuan debugging
-* Review logic
-* Penyusunan dokumentasi
+* Debugging guidance
+* Code review suggestion
+* Dokumentasi
 
-Seluruh implementasi, integrasi, testing, balancing, dan finalisasi project dilakukan secara manual.
+Seluruh implementasi, integrasi, dan finalisasi dilakukan secara manual.
 
 ---
 
-# Submission
+## 👨‍💻 Developer
 
-Disiapkan untuk:
+**Hikari Aufa Yafi**
+Game Programmer | Unity Developer
 
-```text id="i14"
-Technical Test Game Developer 2026
+<p align="left">
+  <a href="https://www.linkedin.com/in/hikariaufa/">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" height="35"/>
+  </a>
+</p>
 ```
