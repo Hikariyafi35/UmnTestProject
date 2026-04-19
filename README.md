@@ -11,7 +11,7 @@ Objek yang dapat di-spawn:
 
 Project dibuat dengan arsitektur modular dan sistem konfigurasi eksternal agar mudah diubah tanpa rebuild.
 
-
+---
 
 ## 🎮 Versi Unity
 
@@ -20,7 +20,7 @@ Project dibuat dengan arsitektur modular dan sistem konfigurasi eksternal agar m
 
 > Keduanya berada pada branch versi **6000.3.x**
 
-
+---
 
 ## ✨ Fitur Utama
 
@@ -32,14 +32,14 @@ Saat file `.png` baru dimasukkan ke folder, objek akan otomatis muncul di dalam 
 
 #### Format Nama File
 
-```text
+```text id="rmf2af"
 FISH_[TYPE]_[YYYYMMDDHHMMSS].png
 TRASH_[TYPE]_[YYYYMMDDHHMMSS].png
 ```
 
 #### Contoh
 
-```text
+```text id="1e1x6e"
 FISH_MACKEREL_20260401165920.png
 FISH_NEMO_20260401170000.png
 TRASH_BOTTLE_20260401170100.png
@@ -86,7 +86,7 @@ Trash memiliki fitur:
 
 Nilai gameplay dapat diubah tanpa rebuild menggunakan file:
 
-```text
+```text id="d3a8sq"
 config.json
 ```
 
@@ -96,7 +96,7 @@ File diletakkan di folder yang sama dengan file **`.exe`**.
 
 ## 📁 Contoh Struktur Build
 
-```text
+```text id="39iq7w"
 Aquascape.exe
 config.json
 InputFolder/
@@ -106,7 +106,7 @@ InputFolder/
 
 ## 🧾 Contoh config.json
 
-```json
+```json id="6mbk4e"
 {
   "watchFolder": "",
 
@@ -133,29 +133,35 @@ InputFolder/
 
 ---
 
-## 📂 Pengaturan Folder Watcher
+## 📂 Folder Watcher
+
+Saat game dijalankan, sistem akan membaca lokasi folder dari:
 
 ### Opsi 1 (Disarankan)
 
-Biarkan kosong:
+Isi path custom pada `config.json`
 
-```json
-"watchFolder": ""
+```json id="1sp0vy"
+"watchFolder": "D:/AquascapeInput"
 ```
 
-Game otomatis menggunakan:
-
-```text
-InputFolder/
-```
+Game akan memantau folder tersebut.
 
 ### Opsi 2
 
-Gunakan folder custom:
+Jika `watchFolder` dikosongkan:
 
-```json
-"watchFolder": "D:/AquascapeInput"
+```json id="o3vsu4"
+"watchFolder": ""
 ```
+
+Game otomatis menggunakan folder default:
+
+```text id="6w9s85"
+InputFolder/
+```
+
+Folder akan dibuat otomatis jika belum ada.
 
 ---
 
@@ -172,14 +178,14 @@ Gunakan folder custom:
 
 1. Clone repository
 2. Buka project menggunakan Unity `6000.3.0f1` atau `6000.3.12f1`
-3. Buka scene utama
+3. Buka sample scene
 4. Tekan **Play**
 
 ---
 
 ## 🧠 Struktur Script
 
-```text
+```text id="pdpt3y"
 Scripts/
 ├── Fish/
 │   ├── FishMovement.cs
@@ -208,6 +214,7 @@ Scripts/
 * Membuat sprite
 * Spawn Fish / Trash
 * Posisi spawn tidak overlap
+* Membaca lokasi folder dari config atau default folder
 
 ### FishMovement.cs
 
@@ -239,7 +246,7 @@ Scripts/
 
 ## 📄 Format File yang Didukung
 
-```text
+```text id="xh3fdk"
 .png
 ```
 
@@ -251,7 +258,7 @@ Nama file yang salah akan diabaikan secara aman.
 
 Contoh:
 
-```text
+```text id="xj5v90"
 fish.png
 abc.png
 gambar_test.png
@@ -281,11 +288,3 @@ AI digunakan untuk:
 Seluruh implementasi, integrasi, testing, balancing, dan finalisasi project dilakukan secara manual.
 
 ---
-
-## 📌 Submission
-
-Disiapkan untuk:
-
-```text
-Technical Test Game Developer 2026
-```
