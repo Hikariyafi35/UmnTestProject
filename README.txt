@@ -6,21 +6,21 @@ Gameplay utama mengubah file gambar **`.png`** yang dimasukkan ke folder tertent
 
 Objek yang dapat di-spawn:
 
-- 🐟 **Fish** → entitas hidup dengan movement dan behavior  
-- 🗑️ **Trash** → sampah yang mengapung di aquarium  
+* 🐟 **Fish** → entitas hidup dengan movement dan behavior
+* 🗑️ **Trash** → sampah yang mengapung di aquarium
 
 Project dibuat dengan arsitektur modular dan sistem konfigurasi eksternal agar mudah diubah tanpa rebuild.
 
----
+
 
 ## 🎮 Versi Unity
 
-- **Developed With:** `Unity 6000.3.0f1`
-- **Compatible With:** `Unity 6000.3.12f1`
+* **Developed With:** `Unity 6000.3.0f1`
+* **Compatible With:** `Unity 6000.3.12f1`
 
 > Keduanya berada pada branch versi **6000.3.x**
 
----
+
 
 ## ✨ Fitur Utama
 
@@ -35,7 +35,7 @@ Saat file `.png` baru dimasukkan ke folder, objek akan otomatis muncul di dalam 
 ```text
 FISH_[TYPE]_[YYYYMMDDHHMMSS].png
 TRASH_[TYPE]_[YYYYMMDDHHMMSS].png
-````
+```
 
 #### Contoh
 
@@ -148,8 +148,6 @@ Game otomatis menggunakan:
 ```text
 InputFolder/
 ```
-
----
 
 ### Opsi 2
 
@@ -290,7 +288,4 @@ Disiapkan untuk:
 
 ```text
 Technical Test Game Developer 2026
-```
-
-```
 ```
