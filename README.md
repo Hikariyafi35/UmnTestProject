@@ -278,8 +278,10 @@ gambar_test.png
 
 ## 🤖 Disclosure Penggunaan AI
 
-AI digunakan untuk:
+AI yang digunakan:
+* Chat GPT
 
+digunakan untuk:
 * Diskusi arsitektur
 * Bantuan debugging
 * Review logic
