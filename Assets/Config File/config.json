@@ -1,0 +1,22 @@
+{
+    "watchFolder": "E:/TestFileWatcher",
+    "fishMinSpeed": 1.5,
+    "fishMaxSpeed": 3.0,
+    "fishDetectionRadius": 15.0,
+    "fishScareDuration": 2.0,
+    "fishScareSpeedMultiplier": 2.0,
+    "scareForce": 8.0,
+
+    "hungerDecreasePerSecond": 10.0,
+    "hungerCooldown": 5.0,
+
+    "foodFallSpeed": 1.5,
+
+    "pushForce": 2.0,
+
+    "masterVolume": 1.0,
+    "sfxVolume": 0.8,
+    "fishEatVolume": 0.7
+
+
+}
